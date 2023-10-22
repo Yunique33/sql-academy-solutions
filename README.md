@@ -108,7 +108,7 @@ WHERE town_from = 'Paris';
 </details>
 
 9. Какие компании организуют перелеты из Владивостока (Vladivostok)? 
-[(сайт)](https://sql-academy.org/ru/trainer/tasks/8)
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/9)
 
 <details>
   <summary>Решение</summary>
