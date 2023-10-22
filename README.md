@@ -72,14 +72,14 @@ WHERE plane = 'TU-134';
 ```mysql
 SELECT DISTINCT cp.name
 FROM company cp
-        JOIN trip tr ON cp.id = tr.company
+         JOIN trip tr ON cp.id = tr.company
 WHERE plane = 'Boeing';
 ```
 
 </details>
 
-7. Вывести все названия самолётов, на которых можно улететь в Москву (Moscow) 
-[(сайт)](https://sql-academy.org/ru/trainer/tasks/7)
+7. Вывести все названия самолётов, на которых можно улететь в Москву (Moscow)
+   [(сайт)](https://sql-academy.org/ru/trainer/tasks/7)
 
 <details>
   <summary>Решение</summary>
@@ -92,8 +92,8 @@ WHERE town_to = 'Moscow';
 
 </details>
 
-8. В какие города можно улететь из Парижа (Paris) и сколько времени это займёт? 
-[(сайт)](https://sql-academy.org/ru/trainer/tasks/8)
+8. В какие города можно улететь из Парижа (Paris) и сколько времени это займёт?
+   [(сайт)](https://sql-academy.org/ru/trainer/tasks/8)
 
 <details>
   <summary>Решение</summary>
@@ -107,8 +107,8 @@ WHERE town_from = 'Paris';
 
 </details>
 
-9. Какие компании организуют перелеты из Владивостока (Vladivostok)? 
-[(сайт)](https://sql-academy.org/ru/trainer/tasks/9)
+9. Какие компании организуют перелеты из Владивостока (Vladivostok)?
+   [(сайт)](https://sql-academy.org/ru/trainer/tasks/9)
 
 <details>
   <summary>Решение</summary>
@@ -116,8 +116,68 @@ WHERE town_from = 'Paris';
 ```mysql
 SELECT name
 FROM trip tr
-        JOIN company cp ON tr.company = cp.id
+         JOIN company cp ON tr.company = cp.id
 WHERE town_from = 'Vladivostok';
+```
+
+</details>
+
+10. Вывести вылеты, совершенные с 10 ч. по 14 ч. 1 января 1900 г. [(сайт)](https://sql-academy.org/ru/trainer/tasks/10)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT *
+FROM trip
+WHERE DATE(time_out) = '1900-01-01'
+  AND TIME_FORMAT(time_out, '%H:%i') >= '10:00'
+  AND TIME_FORMAT(time_out, '%H:%i') <= '14:00';
+```
+
+</details>
+
+11. Выведите пассажиров с самым длинным ФИО. Пробелы, дефисы и точки считаются частью имени.
+    [(сайт)](https://sql-academy.org/ru/trainer/tasks/11)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT name
+FROM passenger
+ORDER BY LENGTH(name) DESC
+LIMIT 1;
+```
+
+</details>
+
+12. Вывести id и количество пассажиров для всех прошедших полётов [(сайт)](https://sql-academy.org/ru/trainer/tasks/12)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT trip,
+       COUNT(*) AS count
+FROM passenger ps
+         JOIN Pass_in_trip pt ON ps.id = pt.passenger
+GROUP BY trip;
+```
+
+</details>
+
+13. Вывести имена людей, у которых есть полный тёзка среди пассажиров
+    [(сайт)](https://sql-academy.org/ru/trainer/tasks/13)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT name
+FROM passenger
+GROUP BY name
+HAVING COUNT(*) > 1;
 ```
 
 </details>
