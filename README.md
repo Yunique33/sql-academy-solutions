@@ -181,3 +181,73 @@ HAVING COUNT(*) > 1;
 ```
 
 </details>
+
+14. В какие города летал Bruce Willis [(сайт)](https://sql-academy.org/ru/trainer/tasks/14)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT town_to
+FROM passenger ps
+         JOIN Pass_in_trip pt ON ps.id = pt.passenger
+         JOIN trip tr ON tr.id = pt.trip
+WHERE name = 'Bruce Willis';
+```
+
+</details>
+
+15. Выведите дату и время прилёта пассажира Стив Мартин (Steve Martin) в Лондон (London) 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/15)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT time_in
+FROM trip tr
+         JOIN Pass_in_trip pt ON tr.id = pt.trip
+         JOIN passenger ps ON pt.passenger = ps.id
+WHERE name = 'Steve Martin'
+  AND town_to = 'London';
+```
+
+</details>
+
+16. Вывести отсортированный по количеству перелетов (по убыванию) и имени (по возрастанию) список пассажиров, 
+совершивших хотя бы 1 полет. [(сайт)](https://sql-academy.org/ru/trainer/tasks/16)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT name,
+       COUNT(name) AS count
+FROM passenger ps
+         JOIN Pass_in_trip pt ON ps.id = pt.passenger
+         JOIN trip tr ON pt.trip = tr.id
+GROUP BY name
+ORDER BY count DESC,
+         name ASC;
+```
+
+</details>
+
+17. Определить, сколько потратил в 2005 году каждый из членов семьи. В результирующей выборке не выводите тех членов 
+семьи, которые ничего не потратили. [(сайт)](https://sql-academy.org/ru/trainer/tasks/17)   
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT member_name,
+       status,
+       SUM(unit_price * amount) AS costs
+FROM FamilyMembers fm
+         JOIN Payments ps ON fm.member_id = ps.family_member
+WHERE YEAR(DATE) = 2005
+GROUP BY member_name,
+         status;
+```
+
+</details>
