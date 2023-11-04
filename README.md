@@ -332,7 +332,6 @@ WHERE status = 'mother';
 23. Найдите самый дорогой деликатес (delicacies) и выведите его цену  
 [(сайт)](https://sql-academy.org/ru/trainer/tasks/23)
 
-
 <details>
   <summary>Решение</summary>
 
@@ -345,6 +344,110 @@ FROM Goods gs
 WHERE good_type_name = 'delicacies'
 ORDER BY unit_price DESC
 LIMIT 1;
+```
+
+</details>
+
+24. Определить кто и сколько потратил в июне 2005 [(сайт)](https://sql-academy.org/ru/trainer/tasks/24)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT member_name,
+       (amount * unit_price) AS costs
+FROM FamilyMembers fm
+         JOIN Payments ps ON fm.member_id = ps.family_member
+WHERE YEAR(date) = 2005
+  AND MONTH(date) = 6;
+```
+
+</details>
+
+25. Определить, какие товары не покупались в 2005 году [(сайт)](https://sql-academy.org/ru/trainer/tasks/25)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT good_name
+FROM Goods
+WHERE good_id NOT IN (
+    SELECT good
+    FROM Payments
+    WHERE YEAR(date) = 2005
+);
+```
+
+</details>
+
+26. Определить группы товаров, которые не приобретались в 2005 году 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/26)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT good_type_name
+FROM GoodTypes
+WHERE good_type_id NOT IN (
+    SELECT type
+    FROM Goods gs
+             JOIN Payments ps ON gs.good_id = ps.good
+    WHERE YEAR(date) = 2005
+    GROUP BY good_id
+);
+```
+
+</details>
+
+27. Узнать, сколько потрачено на каждую из групп товаров в 2005 году. Вывести название группы и сумму 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/27)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT good_type_name,
+       SUM(amount * unit_price) AS costs
+FROM GoodTypes gt
+         JOIN Goods gs ON gt.good_type_id = gs.type
+         JOIN Payments ps ON gs.good_id = ps.good
+WHERE YEAR(date) = 2005
+GROUP BY good_type_name;
+```
+
+</details>
+
+28. Сколько рейсов совершили авиакомпании из Ростова (Rostov) в Москву (Moscow) ? 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/28)  
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT COUNT(*) AS COUNT
+FROM Trip
+WHERE town_from = 'Rostov'
+  AND town_to = 'Moscow';
+```
+
+</details>
+
+29. Выведите имена пассажиров улетевших в Москву (Moscow) на самолете TU-134 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/29)  
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT name
+FROM Passenger ps
+         JOIN Pass_in_trip pt ON ps.id = pt.passenger
+         JOIN Trip tr ON pt.trip = tr.id
+WHERE plane = 'TU-134'
+  AND town_to = 'Moscow'
+GROUP BY name;
 ```
 
 </details>
