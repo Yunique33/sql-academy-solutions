@@ -251,3 +251,100 @@ GROUP BY member_name,
 ```
 
 </details>
+
+18. Узнать, кто старше всех в семьe [(сайт)](https://sql-academy.org/ru/trainer/tasks/18) 
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT member_name
+FROM FamilyMembers
+ORDER BY birthday ASC
+LIMIT 1;
+```
+
+</details>
+
+19. Определить, кто из членов семьи покупал картошку (potato) [(сайт)](https://sql-academy.org/ru/trainer/tasks/19)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT status
+FROM FamilyMembers fm
+         JOIN Payments ps ON fm.member_id = ps.family_member
+         JOIN Goods gs ON ps.good = gs.good_id
+WHERE good_name = 'potato'
+GROUP BY status;
+```
+
+</details>
+
+20. Сколько и кто из семьи потратил на развлечения (entertainment). Вывести статус в семье, имя, сумму 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/20)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT status,
+       member_name,
+       (amount * unit_price) AS costs
+FROM FamilyMembers fm
+         JOIN Payments ps ON fm.member_id = ps.family_member
+         JOIN Goods gs ON ps.good = gs.good_id
+         JOIN GoodTypes gt ON gs.type = gt.good_type_id
+WHERE good_type_name = 'entertainment';
+```
+
+</details>
+
+21. Определить товары, которые покупали более 1 раза [(сайт)](https://sql-academy.org/ru/trainer/tasks/21)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT good_name
+FROM Goods gs
+         JOIN Payments ps ON gs.good_id = ps.good
+GROUP BY good
+HAVING COUNT(*) > 1;
+```
+
+</details>
+
+22. Найти имена всех матерей (mother) [(сайт)](https://sql-academy.org/ru/trainer/tasks/22)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT member_name
+FROM FamilyMembers
+WHERE status = 'mother';
+```
+
+</details>
+
+23. Найдите самый дорогой деликатес (delicacies) и выведите его цену  
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/23)
+
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT good_name,
+       unit_price
+FROM Goods gs
+         JOIN GoodTypes gt ON gs.type = gt.good_type_id
+         JOIN Payments ps ON gs.good_id = ps.good
+WHERE good_type_name = 'delicacies'
+ORDER BY unit_price DESC
+LIMIT 1;
+```
+
+</details>
