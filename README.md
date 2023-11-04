@@ -451,3 +451,47 @@ GROUP BY name;
 ```
 
 </details>
+
+30. Выведите нагруженность (число пассажиров) каждого рейса (trip). Результат вывести в отсортированном виде по убыванию
+нагруженности. [(сайт)](https://sql-academy.org/ru/trainer/tasks/30)  
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT trip,
+       COUNT(passenger) AS count
+FROM Pass_in_trip
+GROUP BY trip
+ORDER BY count DESC;
+```
+
+</details>
+
+31. Вывести всех членов семьи с фамилией Quincey. [(сайт)](https://sql-academy.org/ru/trainer/tasks/31) 
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT *
+FROM FamilyMembers
+WHERE member_name LIKE '% Quincey';
+```
+
+</details>
+
+32. Вывести средний возраст людей (в годах), хранящихся в базе данных. Результат округлите до целого в меньшую сторону.
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/32) 
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT FLOOR(
+               AVG(TIMESTAMPDIFF(YEAR, birthday, CURRENT_TIMESTAMP))
+           ) AS age
+FROM FamilyMembers;
+```
+
+</details>
