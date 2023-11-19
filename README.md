@@ -495,3 +495,48 @@ FROM FamilyMembers;
 ```
 
 </details>
+
+33. Найдите среднюю стоимость икры. В базе данных хранятся данные о покупках красной (red caviar) и черной икры (black 
+caviar). [(сайт)](https://sql-academy.org/ru/trainer/tasks/33) 
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT AVG(unit_price) AS cost
+FROM Payments ps
+         JOIN Goods gs ON ps.good = gs.good_id
+WHERE good_name = 'red caviar'
+   OR good_name = 'black caviar';
+```
+
+</details>
+
+34. Сколько всего 10-ых классов [(сайт)](https://sql-academy.org/ru/trainer/tasks/34) 
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT COUNT(name) AS count
+FROM Class
+WHERE name LIKE '10 %';
+```
+
+</details>
+
+35. Сколько различных кабинетов школы использовались 2.09.2019 в образовательных целях ? 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/35)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT COUNT(DISTINCT classroom) AS count
+FROM Student_in_class sc
+         JOIN Class cl ON sc.class = cl.id
+         JOIN Schedule sh ON sh.class = cl.id
+WHERE DATE_FORMAT(date, '%e.%m.%Y') = '2.09.2019';
+```
+
+</details>
