@@ -569,3 +569,15 @@ LIMIT 1;
 
 </details>
 
+38. Сколько Анн (Anna) учится в школе ? [(сайт)](https://sql-academy.org/ru/trainer/tasks/38)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT COUNT(*) AS count
+FROM Student
+WHERE first_name = 'Anna';
+```
+
+</details>
