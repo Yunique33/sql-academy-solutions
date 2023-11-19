@@ -540,3 +540,32 @@ WHERE DATE_FORMAT(date, '%e.%m.%Y') = '2.09.2019';
 ```
 
 </details>
+
+36. Выведите информацию об обучающихся живущих на улице Пушкина (ul. Pushkina)? 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/36)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT *
+FROM Student
+WHERE address RLIKE 'Pushkina';
+```
+
+</details>
+
+37. Сколько лет самому молодому обучающемуся ? [(сайт)](https://sql-academy.org/ru/trainer/tasks/37)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT TIMESTAMPDIFF(YEAR, birthday, CURRENT_TIMESTAMP) AS year
+FROM Student
+ORDER BY year ASC
+LIMIT 1;
+```
+
+</details>
+
