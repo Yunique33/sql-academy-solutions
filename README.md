@@ -581,3 +581,118 @@ WHERE first_name = 'Anna';
 ```
 
 </details>
+
+39. Сколько обучающихся в 10 B классе ? [(сайт)](https://sql-academy.org/ru/trainer/tasks/39)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT COUNT(*) AS count
+FROM Student_in_class sc
+         JOIN Class cl ON sc.class = cl.id
+WHERE name = '10 B';
+```
+
+</details>
+
+40. Выведите название предметов, которые преподает Ромашкин П.П. (Romashkin P.P.) ? 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/40)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT name AS subjects
+FROM Subject sj
+         JOIN Schedule sc ON sj.id = sc.subject
+         JOIN Teacher tc ON tc.id = sc.teacher
+WHERE last_name = 'Romashkin'
+  AND first_name LIKE 'P%'
+  AND middle_name LIKE 'P%';
+```
+
+</details>
+
+41. Во сколько начинается 4-ый учебный предмет по расписанию ? [(сайт)](https://sql-academy.org/ru/trainer/tasks/41)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT start_pair
+FROM Timepair
+WHERE id = 4;
+```
+
+</details>
+
+42. Сколько времени обучающийся будет находиться в школе, учась со 2-го по 4-ый уч. предмет?
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/42)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT TIMEDIFF(MAX(end_pair), MIN(start_pair)) AS time
+FROM Timepair
+WHERE id BETWEEN 2 AND 4;
+```
+
+</details>
+
+43. Выведите фамилии преподавателей, которые ведут физическую культуру (Physical Culture). Отсортируйте преподавателей 
+по фамилии в алфавитном порядке. [(сайт)](https://sql-academy.org/ru/trainer/tasks/43)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT last_name
+FROM Teacher tc
+         JOIN Schedule sc ON tc.id = sc.teacher
+         JOIN Subject sj ON sj.id = sc.subject
+WHERE name = 'Physical Culture'
+ORDER BY last_name;
+```
+
+</details>
+
+44. Найдите максимальный возраст (колич. лет) среди обучающихся 10 классов ? 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/44)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT TIMESTAMPDIFF(YEAR, birthday, CURRENT_TIMESTAMP) AS max_year
+FROM Student st
+         JOIN Student_in_class sc ON sc.student = st.id
+         JOIN Class cl ON cl.id = sc.class
+WHERE name LIKE '10 %'
+ORDER BY max_year DESC
+LIMIT 1;
+```
+
+</details>
+
+45. Какие кабинеты чаще всего использовались для проведения занятий? Выведите те, которые использовались максимальное 
+количество раз. [(сайт)](https://sql-academy.org/ru/trainer/tasks/45)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT classroom
+FROM Schedule
+GROUP BY classroom
+HAVING count(classroom) = (
+    SELECT COUNT(*) AS count
+    FROM Schedule
+    GROUP BY classroom
+    ORDER BY count DESC
+    LIMIT 1
+);
+```
+
+</details>
