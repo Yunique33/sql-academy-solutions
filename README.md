@@ -696,3 +696,126 @@ HAVING count(classroom) = (
 ```
 
 </details>
+
+46. В каких классах введет занятия преподаватель "Krauze" ? [(сайт)](https://sql-academy.org/ru/trainer/tasks/46)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT name
+FROM Schedule sc
+         JOIN Teacher tc ON tc.id = sc.teacher
+         JOIN Class cl ON cl.id = sc.class
+WHERE last_name = 'Krauze'
+GROUP BY name;
+```
+
+</details>
+
+47. Сколько занятий провел Krauze 30 августа 2019 г.? [(сайт)](https://sql-academy.org/ru/trainer/tasks/47)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT COUNT(*) AS count
+FROM Schedule sc
+         JOIN Teacher tc ON tc.id = sc.teacher
+WHERE DATE_FORMAT(date, '%e %M %Y') = '30 August 2019'
+  AND last_name = 'Krauze';
+```
+
+</details>
+
+48. Выведите заполненность классов в порядке убывания [(сайт)](https://sql-academy.org/ru/trainer/tasks/48)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT name,
+       COUNT(student) AS count
+FROM Class cl
+         JOIN Student_in_class sc ON sc.class = cl.id
+GROUP BY name
+ORDER BY count DESC;
+```
+
+</details>
+
+49. Какой процент обучающихся учится в "10 A" классе? Выведите ответ в диапазоне от 0 до 100 без округления, например, 
+96.0201. [(сайт)](https://sql-academy.org/ru/trainer/tasks/49)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT COUNT(*) * 100 / (
+    SELECT COUNT(*)
+    FROM Student_in_class
+) AS percent
+FROM Student_in_class sc
+         JOIN Class cs ON cs.id = sc.class
+WHERE name = '10 A';
+```
+
+</details>
+
+50. Какой процент обучающихся родился в 2000 году? Результат округлить до целого в меньшую сторону. 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/50)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT FLOOR(
+                       COUNT(*) * 100 / (
+                   SELECT COUNT(*)
+                   FROM Student_in_class
+               )
+           ) AS percent
+FROM Student_in_class sc
+         JOIN Student st ON st.id = sc.student
+WHERE YEAR(birthday) = 2000;
+```
+
+</details>
+
+51. Добавьте товар с именем "Cheese" и типом "food" в список товаров (Goods). 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/51)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+INSERT INTO Goods
+SET good_id   = (
+    SELECT COUNT(*) + 1
+    FROM Goods AS gs
+),
+    good_name = 'Cheese',
+    type      = (
+        SELECT good_type_id
+        FROM GoodTypes
+        WHERE good_type_name = 'food'
+    );
+```
+
+</details>
+
+52. Добавьте в список типов товаров (GoodTypes) новый тип "auto". [(сайт)](https://sql-academy.org/ru/trainer/tasks/52)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+INSERT INTO GoodTypes
+SET good_type_id   = (
+    SELECT COUNT(*) + 1
+    FROM GoodTypes AS gt
+),
+    good_type_name = 'auto';
+```
+
+</details>
