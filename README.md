@@ -819,3 +819,16 @@ SET good_type_id   = (
 ```
 
 </details>
+
+53. Измените имя "Andie Quincey" на новое "Andie Anthony".  [(сайт)](https://sql-academy.org/ru/trainer/tasks/53)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+UPDATE FamilyMembers
+SET member_name = 'Andie Anthony'
+WHERE member_name = 'Andie Quincey';
+```
+
+</details>
