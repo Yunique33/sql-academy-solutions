@@ -934,3 +934,88 @@ WHERE phone_number LIKE '+375 %';
 ```
 
 </details>
+
+60. Выведите идентификаторы преподавателей, которые хотя бы один раз за всё время преподавали в каждом из одиннадцатых 
+классов. [(сайт)](https://sql-academy.org/ru/trainer/tasks/60)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT teacher
+FROM Schedule sc
+         JOIN Class cl ON sc.class = cl.id
+WHERE name LIKE '11 %'
+GROUP BY teacher
+HAVING COUNT(DISTINCT name) = 2;
+```
+
+</details>
+
+61. Выведите список комнат, которые были зарезервированы хотя бы на одни сутки в 12-ую неделю 2020 года. В данной задаче
+в качестве одной недели примите период из семи дней, первый из которых начинается 1 января 2020 года. Например, первая 
+неделя года — 1–7 января, а третья — 15–21 января. [(сайт)](https://sql-academy.org/ru/trainer/tasks/61)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT Rooms.*
+FROM Reservations
+         JOIN Rooms ON Rooms.id = Reservations.room_id
+WHERE WEEK(start_date, 1) = 12
+  AND YEAR(start_date) = 2020;
+```
+
+</details>
+
+62. Вывести в порядке убывания популярности доменные имена 2-го уровня, используемые пользователями для электронной 
+почты. Полученный результат необходимо дополнительно отсортировать по возрастанию названий доменных имён. 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/62)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT SUBSTRING_INDEX(email, '@', -1)        AS domain,
+       COUNT(substring_index(email, '@', -1)) AS count
+FROM Users
+GROUP BY domain
+ORDER BY count DESC,
+         domain;
+```
+
+</details>
+
+63. Выведите отсортированный список (по возрастанию) фамилий и имен студентов в виде Фамилия.И. 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/63)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT CONCAT(last_name, '.', LEFT(first_name, 1), '.') AS name
+FROM Student
+ORDER BY name;
+```
+
+</details>
+
+64. Вывести количество бронирований по каждому месяцу каждого года, в которых было хотя бы 1 бронирование. Результат 
+отсортируйте в порядке возрастания даты бронирования. [(сайт)](https://sql-academy.org/ru/trainer/tasks/64)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT YEAR(start_date)  AS year,
+       MONTH(start_date) AS month,
+       COUNT(*)          AS amount
+FROM Reservations
+GROUP BY YEAR(start_date),
+         MONTH(start_date)
+ORDER BY year,
+         month;
+```
+
+</details>
