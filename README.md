@@ -820,7 +820,7 @@ SET good_type_id   = (
 
 </details>
 
-53. Измените имя "Andie Quincey" на новое "Andie Anthony".  [(сайт)](https://sql-academy.org/ru/trainer/tasks/53)
+53. Измените имя "Andie Quincey" на новое "Andie Anthony". [(сайт)](https://sql-academy.org/ru/trainer/tasks/53)
 
 <details>
   <summary>Решение</summary>
@@ -829,6 +829,19 @@ SET good_type_id   = (
 UPDATE FamilyMembers
 SET member_name = 'Andie Anthony'
 WHERE member_name = 'Andie Quincey';
+```
+
+</details>
+
+54. Удалить всех членов семьи с фамилией "Quincey". [(сайт)](https://sql-academy.org/ru/trainer/tasks/54)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+DELETE
+FROM FamilyMembers
+WHERE member_name LIKE '% Quincey';
 ```
 
 </details>
