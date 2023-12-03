@@ -1135,3 +1135,92 @@ GROUP BY category;
 ```
 
 </details>
+
+71. Найдите какой процент пользователей, зарегистрированных на сервисе бронирования, хоть раз арендовали или сдавали в 
+аренду жилье. Результат округлите до сотых. [(сайт)](https://sql-academy.org/ru/trainer/tasks/71)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT ROUND(
+                       (
+                           SELECT COUNT(*)
+                           FROM (
+                                    SELECT DISTINCT owner_id
+                                    FROM Rooms rm
+                                             JOIN Reservations rs ON rm.id = rs.room_id
+                                    UNION
+                                    SELECT user_id
+                                    FROM Reservations
+                                ) active_users
+                       ) * 100 / (
+                           SELECT COUNT(*)
+                           FROM Users
+                       ),
+                       2
+           ) AS percent;
+```
+
+</details>
+
+72. Выведите среднюю стоимость бронирования для комнат, которых бронировали хотя бы один раз. Среднюю стоимость 
+необходимо округлить до целого значения вверх. [(сайт)](https://sql-academy.org/ru/trainer/tasks/72)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT room_id,
+       CEILING(AVG(price)) AS avg_price
+FROM Reservations
+GROUP BY room_id;
+```
+
+</details>
+
+73. Выведите id тех комнат, которые арендовали нечетное количество раз 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/73)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT room_id,
+       COUNT(*) AS count
+FROM Reservations
+GROUP BY room_id
+HAVING count % 2 != 0;
+```
+
+</details>
+
+74. Выведите идентификатор и признак наличия интернета в помещении. Если интернет в сдаваемом жилье присутствует, то 
+выведите «YES», иначе «NO». [(сайт)](https://sql-academy.org/ru/trainer/tasks/74)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT id,
+       IF(has_internet = 1, 'YES', 'NO') AS has_internet
+FROM Rooms;
+```
+
+</details>
+
+75. Выведите фамилию, имя и дату рождения студентов, кто был рожден в мае. 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/75)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT last_name,
+       first_name,
+       birthday
+FROM Student
+WHERE MONTHNAME(birthday) = 'May';
+```
+
+</details>
