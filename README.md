@@ -845,3 +845,92 @@ WHERE member_name LIKE '% Quincey';
 ```
 
 </details>
+
+55. Удалить компании, совершившие наименьшее количество рейсов. [(сайт)](https://sql-academy.org/ru/trainer/tasks/55)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+DELETE
+FROM company
+WHERE id IN (
+    SELECT company
+    FROM trip
+    GROUP BY company
+    HAVING COUNT(*) = (
+        SELECT COUNT(*) AS count
+        FROM trip
+        GROUP BY company
+        ORDER BY count
+        LIMIT 1
+    )
+);
+```
+
+</details>
+
+56. Удалить все перелеты, совершенные из Москвы (Moscow). [(сайт)](https://sql-academy.org/ru/trainer/tasks/56)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+DELETE
+FROM trip
+WHERE town_from = 'Moscow';
+```
+
+</details>
+
+57. Перенести расписание всех занятий на 30 мин. вперед. [(сайт)](https://sql-academy.org/ru/trainer/tasks/57)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+UPDATE Timepair
+SET start_pair = ADDTIME(start_pair, '00:30:00'),
+    end_pair   = ADDTIME(end_pair, '00:30:00');
+```
+
+</details>
+
+58. Добавить отзыв с рейтингом 5 на жилье, находящиеся по адресу "11218, Friel Place, New York", от имени "George 
+Clooney" [(сайт)](https://sql-academy.org/ru/trainer/tasks/58)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+INSERT INTO Reviews
+SET id             = (
+    SELECT COUNT(*) + 1
+    FROM Reviews rw
+),
+    reservation_id = (
+        SELECT rs.id
+        FROM Reservations rs
+                 JOIN Rooms rm ON rm.id = rs.room_id
+                 JOIN Users us ON rs.user_id = us.id
+        WHERE address = '11218, Friel Place, New York'
+          AND name = 'George Clooney'
+    ),
+    rating         = 5;
+```
+
+</details>
+
+59. Вывести пользователей,указавших Белорусский номер телефона ? Телефонный код Белоруссии +375. 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/59)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT *
+FROM Users
+WHERE phone_number LIKE '+375 %';
+```
+
+</details>
