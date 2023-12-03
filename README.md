@@ -1224,3 +1224,46 @@ WHERE MONTHNAME(birthday) = 'May';
 ```
 
 </details>
+
+76. Вывести имена всех пользователей сервиса бронирования жилья, а также два признака: является ли пользователь 
+собственником какого-либо жилья (is_owner) и является ли пользователь арендатором (is_tenant). В случае наличия у 
+пользователя признака необходимо вывести в соответствующее поле 1, иначе 0. 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/76)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT name,
+       IF(
+                   id IN (
+                   SELECT owner_id
+                   FROM Rooms
+               ),
+                   1,
+                   0
+           ) AS is_owner,
+       IF(
+                   id IN (
+                   SELECT user_id
+                   FROM Reservations
+               ),
+                   1,
+                   0
+           ) AS is_tenant
+FROM Users;
+```
+
+</details>
+
+77. Создайте представление с именем "People", которое будет содержать список имен (first_name) и фамилий (last_name) 
+всех студентов (Student) и преподавателей(Teacher) [(сайт)](https://sql-academy.org/ru/trainer/tasks/77)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+
+```
+
+</details>
