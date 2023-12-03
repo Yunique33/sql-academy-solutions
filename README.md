@@ -1019,3 +1019,119 @@ ORDER BY year,
 ```
 
 </details>
+
+65. Необходимо вывести рейтинг для комнат, которые хоть раз арендовали, как среднее значение рейтинга отзывов 
+округленное до целого вниз. [(сайт)](https://sql-academy.org/ru/trainer/tasks/65)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT room_id,
+       FLOOR(AVG(rating)) AS rating
+FROM Reservations rs
+         JOIN Reviews rw ON rw.reservation_id = rs.id
+GROUP BY room_id;
+```
+
+</details>
+
+66. Вывести список комнат со всеми удобствами (наличие ТВ, интернета, кухни и кондиционера), а также общее количество 
+дней и сумму за все дни аренды каждой из таких комнат. [(сайт)](https://sql-academy.org/ru/trainer/tasks/66)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT home_type,
+       address,
+       IFNULL(SUM(total / rs.price), 0) AS days,
+       IFNULL(SUM(total), 0)            AS total_fee
+FROM Rooms rm
+         LEFT JOIN Reservations rs ON rs.room_id = rm.id
+WHERE has_tv = 1
+  AND has_internet = 1
+  AND has_kitchen = 1
+  AND has_air_con = 1
+GROUP BY home_type,
+         address;
+```
+
+</details>
+
+67. Вывести время отлета и время прилета для каждого перелета в формате "ЧЧ:ММ, ДД.ММ - ЧЧ:ММ, ДД.ММ", где часы и минуты
+с ведущим нулем, а день и месяц без. [(сайт)](https://sql-academy.org/ru/trainer/tasks/67)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT CONCAT(
+               DATE_FORMAT(time_out, '%H:%i, %e.%c'),
+               ' - ',
+               DATE_FORMAT(time_in, '%H:%i, %e.%c')
+           ) AS flight_time
+FROM Trip;
+```
+
+</details>
+
+68. Для каждой комнаты, которую снимали как минимум 1 раз, найдите имя человека, снимавшего ее последний раз, и дату, 
+когда он выехал [(сайт)](https://sql-academy.org/ru/trainer/tasks/68)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT rs.room_id,
+       name,
+       date AS end_date
+FROM (
+         SELECT room_id,
+                MAX(end_date) AS date
+         FROM Reservations
+         GROUP BY room_id
+     ) rs
+         JOIN Reservations rsv ON rs.room_id = rsv.room_id
+    AND rs.date = rsv.end_date
+         JOIN Users us ON rsv.user_id = us.id;
+```
+
+</details>
+
+69. Вывести идентификаторы всех владельцев комнат, что размещены на сервисе бронирования жилья и сумму, которую они 
+заработали [(сайт)](https://sql-academy.org/ru/trainer/tasks/69)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT owner_id,
+       IFNULL(SUM(total), 0) AS total_earn
+FROM Rooms rm
+         LEFT JOIN Reservations rs ON rm.id = rs.room_id
+GROUP BY owner_id;
+```
+
+</details>
+
+70. Необходимо категоризовать жилье на economy, comfort, premium по цене соответственно <= 100,
+100 < цена < 200, >= 200. В качестве результата вывести таблицу с названием категории и количеством жилья, попадающего в
+данную категорию [(сайт)](https://sql-academy.org/ru/trainer/tasks/70)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT CASE
+           WHEN price <= 100 THEN 'economy'
+           WHEN price > 100
+               AND price < 200 THEN 'comfort'
+           WHEN price >= 200 THEN 'premium'
+           END      AS category,
+       COUNT(price) AS count
+FROM Rooms
+GROUP BY category;
+```
+
+</details>
