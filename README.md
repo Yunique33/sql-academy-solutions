@@ -1263,7 +1263,14 @@ FROM Users;
   <summary>Решение</summary>
 
 ```mysql
-
+CREATE VIEW People AS
+SELECT first_name,
+       last_name
+FROM Student
+UNION
+SELECT first_name,
+       last_name
+FROM Teacher
 ```
 
 </details>
