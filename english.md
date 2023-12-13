@@ -68,7 +68,7 @@ WHERE plane = 'TU-134';
 
 </details>
 
-6. Какие компании совершали перелеты на Boeing [(link)](https://sql-academy.org/en/trainer/tasks/6)
+6. Which companies have flown on Boeing [(link)](https://sql-academy.org/en/trainer/tasks/6)
 
 <details>
   <summary>Solution</summary>
@@ -82,8 +82,7 @@ WHERE plane = 'Boeing';
 
 </details>
 
-7. Вывести все названия самолётов, на которых можно улететь в Москву (Moscow)
-   [(link)](https://sql-academy.org/en/trainer/tasks/7)
+7. Display all the names of aircraft that you can fly to Moscow [(link)](https://sql-academy.org/en/trainer/tasks/7)
 
 <details>
   <summary>Solution</summary>
@@ -96,8 +95,7 @@ WHERE town_to = 'Moscow';
 
 </details>
 
-8. В какие города можно улететь из Парижа (Paris) и сколько времени это займёт?
-   [(link)](https://sql-academy.org/en/trainer/tasks/8)
+8. What cities can I fly to from Paris and how long will it take? [(link)](https://sql-academy.org/en/trainer/tasks/8)
 
 <details>
   <summary>Solution</summary>
@@ -111,8 +109,7 @@ WHERE town_from = 'Paris';
 
 </details>
 
-9. Какие компании организуют перелеты из Владивостока (Vladivostok)?
-   [(link)](https://sql-academy.org/en/trainer/tasks/9)
+9. What companies organize flights from Vladivostok? [(link)](https://sql-academy.org/en/trainer/tasks/9)
 
 <details>
   <summary>Solution</summary>
@@ -126,7 +123,7 @@ WHERE town_from = 'Vladivostok';
 
 </details>
 
-10. Вывести вылеты, совершенные с 10 ч. по 14 ч. 1 января 1900 г. [(link)](https://sql-academy.org/en/trainer/tasks/10)
+10. Print trips made from 10 a.m. to 2 p.m. on January 1, 1900. [(link)](https://sql-academy.org/en/trainer/tasks/10)
 
 <details>
   <summary>Solution</summary>
@@ -141,7 +138,7 @@ WHERE DATE(time_out) = '1900-01-01'
 
 </details>
 
-11. Выведите пассажиров с самым длинным ФИО. Пробелы, дефисы и точки считаются частью имени.
+11. Print the passengers with the longest full name. Spaces, hyphens, and dots are considered part of the name.
     [(link)](https://sql-academy.org/en/trainer/tasks/11)
 
 <details>
@@ -156,7 +153,7 @@ LIMIT 1;
 
 </details>
 
-12. Вывести id и количество пассажиров для всех прошедших полётов [(link)](https://sql-academy.org/en/trainer/tasks/12)
+12. Print the id and number of passengers for all past trips [(link)](https://sql-academy.org/en/trainer/tasks/12)
 
 <details>
   <summary>Solution</summary>
@@ -171,8 +168,8 @@ GROUP BY trip;
 
 </details>
 
-13. Вывести имена людей, у которых есть полный тёзка среди пассажиров
-    [(link)](https://sql-academy.org/en/trainer/tasks/13)
+13. Display the names of people who have a full namesake among passengers
+[(link)](https://sql-academy.org/en/trainer/tasks/13)
 
 <details>
   <summary>Solution</summary>
@@ -186,7 +183,7 @@ HAVING COUNT(*) > 1;
 
 </details>
 
-14. В какие города летал Bruce Willis [(link)](https://sql-academy.org/en/trainer/tasks/14)
+14. Which cities did Bruce Willis visit [(link)](https://sql-academy.org/en/trainer/tasks/14)
 
 <details>
   <summary>Solution</summary>
@@ -201,7 +198,7 @@ WHERE name = 'Bruce Willis';
 
 </details>
 
-15. Выведите дату и время прилёта пассажира Стив Мартин (Steve Martin) в Лондон (London)
+15. Print the date and time of arrival of the passenger Steve Martin to London (London)
     [(link)](https://sql-academy.org/en/trainer/tasks/15)
 
 <details>
@@ -218,8 +215,8 @@ WHERE name = 'Steve Martin'
 
 </details>
 
-16. Вывести отсортированный по количеству перелетов (по убыванию) и имени (по возрастанию) список пассажиров,
-    совершивших хотя бы 1 полет. [(link)](https://sql-academy.org/en/trainer/tasks/16)
+16. Display the list of passengers sorted by the number of flights (in descending order) and name (in ascending order) 
+who have made at least 1 flight. [(link)](https://sql-academy.org/en/trainer/tasks/16)
 
 <details>
   <summary>Solution</summary>
@@ -237,8 +234,8 @@ ORDER BY count DESC,
 
 </details>
 
-17. Определить, сколько потратил в 2005 году каждый из членов семьи. В результирующей выборке не выводите тех членов
-    семьи, которые ничего не потратили. [(link)](https://sql-academy.org/en/trainer/tasks/17)
+17. Determine how much each family member spent in 2005. In the resulting sample, do not output those family members who
+have not spent anything. [(link)](https://sql-academy.org/en/trainer/tasks/17)
 
 <details>
   <summary>Solution</summary>
@@ -256,7 +253,8 @@ GROUP BY member_name,
 
 </details>
 
-18. Узнать, кто старше всех в семьe [(link)](https://sql-academy.org/en/trainer/tasks/18)
+18. Print the name of the oldest person. If there are several of them, then output them all. 
+[(link)](https://sql-academy.org/en/trainer/tasks/18)
 
 <details>
   <summary>Solution</summary>
@@ -270,7 +268,7 @@ LIMIT 1;
 
 </details>
 
-19. Определить, кто из членов семьи покупал картошку (potato) [(link)](https://sql-academy.org/en/trainer/tasks/19)
+19. Determine which family member bought potatoes (potato) [(link)](https://sql-academy.org/en/trainer/tasks/19)
 
 <details>
   <summary>Solution</summary>
@@ -286,8 +284,8 @@ GROUP BY status;
 
 </details>
 
-20. Сколько и кто из семьи потратил на развлечения (entertainment). Вывести статус в семье, имя, сумму
-    [(link)](https://sql-academy.org/en/trainer/tasks/20)
+20. How much and who from the family spent on entertainment. Print family status, name, amount
+[(link)](https://sql-academy.org/en/trainer/tasks/20)
 
 <details>
   <summary>Solution</summary>
@@ -305,7 +303,7 @@ WHERE good_type_name = 'entertainment';
 
 </details>
 
-21. Определить товары, которые покупали более 1 раза [(link)](https://sql-academy.org/en/trainer/tasks/21)
+21. Identify products that have been purchased more than 1 time [(link)](https://sql-academy.org/en/trainer/tasks/21)
 
 <details>
   <summary>Solution</summary>
@@ -320,7 +318,7 @@ HAVING COUNT(*) > 1;
 
 </details>
 
-22. Найти имена всех матерей (mother) [(link)](https://sql-academy.org/en/trainer/tasks/22)
+22. Print the names of all mothers [(link)](https://sql-academy.org/en/trainer/tasks/22)
 
 <details>
   <summary>Solution</summary>
