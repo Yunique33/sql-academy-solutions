@@ -895,7 +895,7 @@ SET start_pair = ADDTIME(start_pair, '00:30:00'),
 
 </details>
 
-58.Add a 5-star comment on housing located at 11218 Friel Place, New York on behalf of George Clooney 
+58. Add a 5-star comment on housing located at 11218 Friel Place, New York on behalf of George Clooney 
 [(link)](https://sql-academy.org/en/trainer/tasks/58)
 
 <details>
