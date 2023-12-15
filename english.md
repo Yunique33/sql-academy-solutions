@@ -2,7 +2,7 @@
 
 [English version](english.md)
 
-[Сертификат](yunus_ganiyev.pdf)
+[Certificate](yunus_ganiyev.pdf)
 
 1. Print the names of all the people who are in the airline database 
 [(link)](https://sql-academy.org/en/trainer/tasks/1)
@@ -331,8 +331,8 @@ WHERE status = 'mother';
 
 </details>
 
-23. Найдите самый дорогой деликатес (delicacies) и выведите его цену  
-    [(link)](https://sql-academy.org/en/trainer/tasks/23)
+23. Find the most expensive delicacy (delicacies) and print its price 
+[(link)](https://sql-academy.org/en/trainer/tasks/23)
 
 <details>
   <summary>Solution</summary>
@@ -350,7 +350,7 @@ LIMIT 1;
 
 </details>
 
-24. Определить кто и сколько потратил в июне 2005 [(link)](https://sql-academy.org/en/trainer/tasks/24)
+24. Determine who spent how much in June 2005 [(link)](https://sql-academy.org/en/trainer/tasks/24)
 
 <details>
   <summary>Solution</summary>
@@ -366,7 +366,7 @@ WHERE YEAR(date) = 2005
 
 </details>
 
-25. Определить, какие товары не покупались в 2005 году [(link)](https://sql-academy.org/en/trainer/tasks/25)
+25. Determine which products were not purchased in 2005 [(link)](https://sql-academy.org/en/trainer/tasks/25)
 
 <details>
   <summary>Solution</summary>
@@ -383,8 +383,7 @@ WHERE good_id NOT IN (
 
 </details>
 
-26. Определить группы товаров, которые не приобретались в 2005 году
-    [(link)](https://sql-academy.org/en/trainer/tasks/26)
+26. Identify groups of products that were not purchased in 2005 [(link)](https://sql-academy.org/en/trainer/tasks/26)
 
 <details>
   <summary>Solution</summary>
@@ -403,7 +402,7 @@ WHERE good_type_id NOT IN (
 
 </details>
 
-27. Узнать, сколько потрачено на каждую из групп товаров в 2005 году. Вывести название группы и сумму
+27. Find out how much was spent on each of the product groups in 2005. Print the group name and amount
     [(link)](https://sql-academy.org/en/trainer/tasks/27)
 
 <details>
@@ -421,8 +420,7 @@ GROUP BY good_type_name;
 
 </details>
 
-28. Сколько рейсов совершили авиакомпании из Ростова (Rostov) в Москву (Moscow) ?
-    [(link)](https://sql-academy.org/en/trainer/tasks/28)
+28. How many trips were made by airlines from Rostov to Moscow ? [(link)](https://sql-academy.org/en/trainer/tasks/28)
 
 <details>
   <summary>Solution</summary>
@@ -436,8 +434,7 @@ WHERE town_from = 'Rostov'
 
 </details>
 
-29. Выведите имена пассажиров улетевших в Москву (Moscow) на самолете TU-134
-    [(link)](https://sql-academy.org/en/trainer/tasks/29)
+29. Print the names of passengers who flew to Moscow on TU-134 [(link)](https://sql-academy.org/en/trainer/tasks/29)
 
 <details>
   <summary>Solution</summary>
@@ -454,8 +451,8 @@ GROUP BY name;
 
 </details>
 
-30. Выведите нагруженность (число пассажиров) каждого рейса (trip). Результат вывести в отсортированном виде по убыванию
-    нагруженности. [(link)](https://sql-academy.org/en/trainer/tasks/30)
+30. Output the load (number of passengers) of each trip . Output the result in sorted form in descending order of load. 
+[(link)](https://sql-academy.org/en/trainer/tasks/30)
 
 <details>
   <summary>Solution</summary>
@@ -470,7 +467,7 @@ ORDER BY count DESC;
 
 </details>
 
-31. Вывести всех членов семьи с фамилией Quincey. [(link)](https://sql-academy.org/en/trainer/tasks/31)
+31. Print all family members with the last name Quincey. [(link)](https://sql-academy.org/en/trainer/tasks/31)
 
 <details>
   <summary>Solution</summary>
@@ -483,8 +480,8 @@ WHERE member_name LIKE '% Quincey';
 
 </details>
 
-32. Вывести средний возраст людей (в годах), хранящихся в базе данных. Результат округлите до целого в меньшую сторону.
-    [(link)](https://sql-academy.org/en/trainer/tasks/32)
+32. Display the average age of people (in years) stored in the database. The result is rounded to the nearest whole in 
+the smaller side. [(link)](https://sql-academy.org/en/trainer/tasks/32)
 
 <details>
   <summary>Solution</summary>
@@ -498,8 +495,8 @@ FROM FamilyMembers;
 
 </details>
 
-33. Найдите среднюю стоимость икры. В базе данных хранятся данные о покупках красной (red caviar) и черной икры (black
-    caviar). [(link)](https://sql-academy.org/en/trainer/tasks/33)
+33. Find the average cost of caviar. The database stores data on purchases of red caviar and black caviar.
+[(link)](https://sql-academy.org/en/trainer/tasks/33)
 
 <details>
   <summary>Solution</summary>
@@ -514,7 +511,7 @@ WHERE good_name = 'red caviar'
 
 </details>
 
-34. Сколько всего 10-ых классов [(link)](https://sql-academy.org/en/trainer/tasks/34)
+34. How many 10th grades are there in total [(link)](https://sql-academy.org/en/trainer/tasks/34)
 
 <details>
   <summary>Solution</summary>
@@ -527,7 +524,7 @@ WHERE name LIKE '10 %';
 
 </details>
 
-35. Сколько различных кабинетов школы использовались 2.09.2019 в образовательных целях ?
+35. СHow many different classrooms of the school were used on September 2, 2019 for classes?
     [(link)](https://sql-academy.org/en/trainer/tasks/35)
 
 <details>
@@ -543,7 +540,7 @@ WHERE DATE_FORMAT(date, '%e.%m.%Y') = '2.09.2019';
 
 </details>
 
-36. Выведите информацию об обучающихся живущих на улице Пушкина (ul. Pushkina)?
+36. Print information about students living on Pushkin street (ul. Pushkina)?
     [(link)](https://sql-academy.org/en/trainer/tasks/36)
 
 <details>
@@ -557,7 +554,7 @@ WHERE address RLIKE 'Pushkina';
 
 </details>
 
-37. Сколько лет самому молодому обучающемуся ? [(link)](https://sql-academy.org/en/trainer/tasks/37)
+37. How old is the youngest student ? [(link)](https://sql-academy.org/en/trainer/tasks/37)
 
 <details>
   <summary>Solution</summary>
@@ -571,7 +568,7 @@ LIMIT 1;
 
 </details>
 
-38. Сколько Анн (Anna) учится в школе ? [(link)](https://sql-academy.org/en/trainer/tasks/38)
+38. How many Ann (Anna) goes to school ? [(link)](https://sql-academy.org/en/trainer/tasks/38)
 
 <details>
   <summary>Solution</summary>
@@ -584,7 +581,7 @@ WHERE first_name = 'Anna';
 
 </details>
 
-39. Сколько обучающихся в 10 B классе ? [(link)](https://sql-academy.org/en/trainer/tasks/39)
+39. How many students are in grade 10 B ? [(link)](https://sql-academy.org/en/trainer/tasks/39)
 
 <details>
   <summary>Solution</summary>
@@ -598,8 +595,7 @@ WHERE name = '10 B';
 
 </details>
 
-40. Выведите название предметов, которые преподает Ромашкин П.П. (Romashkin P.P.) ?
-    [(link)](https://sql-academy.org/en/trainer/tasks/40)
+40. Print the name of the subjects that Romashkin P. P. teaches ? [(link)](https://sql-academy.org/en/trainer/tasks/40)
 
 <details>
   <summary>Solution</summary>
@@ -616,7 +612,7 @@ WHERE last_name = 'Romashkin'
 
 </details>
 
-41. Во сколько начинается 4-ый учебный предмет по расписанию ? [(link)](https://sql-academy.org/en/trainer/tasks/41)
+41. What time does the 4th class start according to the schedule ? [(link)](https://sql-academy.org/en/trainer/tasks/41)
 
 <details>
   <summary>Solution</summary>
@@ -629,7 +625,7 @@ WHERE id = 4;
 
 </details>
 
-42. Сколько времени обучающийся будет находиться в школе, учась со 2-го по 4-ый уч. предмет?
+42. How long will the student be in school, studying from the 2nd to the 4th academic subject?
     [(link)](https://sql-academy.org/en/trainer/tasks/42)
 
 <details>
@@ -643,8 +639,8 @@ WHERE id BETWEEN 2 AND 4;
 
 </details>
 
-43. Выведите фамилии преподавателей, которые ведут физическую культуру (Physical Culture). Отсортируйте преподавателей
-    по фамилии в алфавитном порядке. [(link)](https://sql-academy.org/en/trainer/tasks/43)
+43. Print the last names of the teachers who teach physical education (Physical Culture). Sort the teachers by last name
+in alphabetical order. [(link)](https://sql-academy.org/en/trainer/tasks/43)
 
 <details>
   <summary>Solution</summary>
@@ -660,8 +656,8 @@ ORDER BY last_name;
 
 </details>
 
-44. Найдите максимальный возраст (колич. лет) среди обучающихся 10 классов ?
-    [(link)](https://sql-academy.org/en/trainer/tasks/44)
+44. Find the maximum age (number years) among students of 10 classes ?
+[(link)](https://sql-academy.org/en/trainer/tasks/44)
 
 <details>
   <summary>Solution</summary>
