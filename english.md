@@ -674,8 +674,8 @@ LIMIT 1;
 
 </details>
 
-45. Какие кабинеты чаще всего использовались для проведения занятий? Выведите те, которые использовались максимальное
-    количество раз. [(link)](https://sql-academy.org/en/trainer/tasks/45)
+45. Which classrooms were most often used for classes? Output the ones that have been used the maximum number of times. 
+[(link)](https://sql-academy.org/en/trainer/tasks/45)
 
 <details>
   <summary>Solution</summary>
@@ -695,7 +695,7 @@ HAVING count(classroom) = (
 
 </details>
 
-46. В каких классах введет занятия преподаватель "Krauze" ? [(link)](https://sql-academy.org/en/trainer/tasks/46)
+46. In which classes will the Krauze teacher introduce classes ? [(link)](https://sql-academy.org/en/trainer/tasks/46)
 
 <details>
   <summary>Solution</summary>
@@ -711,7 +711,7 @@ GROUP BY name;
 
 </details>
 
-47. Сколько занятий провел Krauze 30 августа 2019 г.? [(link)](https://sql-academy.org/en/trainer/tasks/47)
+47. How many classes did Krauze hold on August 30, 2019? [(link)](https://sql-academy.org/en/trainer/tasks/47)
 
 <details>
   <summary>Solution</summary>
@@ -726,7 +726,7 @@ WHERE DATE_FORMAT(date, '%e %M %Y') = '30 August 2019'
 
 </details>
 
-48. Выведите заполненность классов в порядке убывания [(link)](https://sql-academy.org/en/trainer/tasks/48)
+48. Print the number of students in classes in descending order [(link)](https://sql-academy.org/en/trainer/tasks/48)
 
 <details>
   <summary>Solution</summary>
@@ -742,8 +742,8 @@ ORDER BY count DESC;
 
 </details>
 
-49. Какой процент обучающихся учится в "10 A" классе? Выведите ответ в диапазоне от 0 до 100 без округления, например,
-    96.0201. [(link)](https://sql-academy.org/en/trainer/tasks/49)
+49. What percentage of students are styding in the "10 A" class? Print the answer in the range from 0 to 100 without 
+rounding, for example, 96.0201. [(link)](https://sql-academy.org/en/trainer/tasks/49)
 
 <details>
   <summary>Solution</summary>
@@ -760,7 +760,7 @@ WHERE name = '10 A';
 
 </details>
 
-50. Какой процент обучающихся родился в 2000 году? Результат округлить до целого в меньшую сторону.
+50. What percentage of students were born in 2000? The result of rounding to the nearest whole in the smaller side.
     [(link)](https://sql-academy.org/en/trainer/tasks/50)
 
 <details>
@@ -780,7 +780,7 @@ WHERE YEAR(birthday) = 2000;
 
 </details>
 
-51. Добавьте товар с именем "Cheese" и типом "food" в список товаров (Goods).
+51. Add a product with the name "Cheese" and the type "food" to the list of goods (Goods).
     [(link)](https://sql-academy.org/en/trainer/tasks/51)
 
 <details>
@@ -802,7 +802,8 @@ SET good_id   = (
 
 </details>
 
-52. Добавьте в список типов товаров (GoodTypes) новый тип "auto". [(link)](https://sql-academy.org/en/trainer/tasks/52)
+52. Add to the list of product types (GoodTypes) a new type of "auto". 
+[(link)](https://sql-academy.org/en/trainer/tasks/52)
 
 <details>
   <summary>Solution</summary>
@@ -818,7 +819,7 @@ SET good_type_id   = (
 
 </details>
 
-53. Измените имя "Andie Quincey" на новое "Andie Anthony". [(link)](https://sql-academy.org/en/trainer/tasks/53)
+53. Change the name "Andie Quincey" to the new "Andie Anthony". [(link)](https://sql-academy.org/en/trainer/tasks/53)
 
 <details>
   <summary>Solution</summary>
@@ -831,7 +832,7 @@ WHERE member_name = 'Andie Quincey';
 
 </details>
 
-54. Удалить всех членов семьи с фамилией "Quincey". [(link)](https://sql-academy.org/en/trainer/tasks/54)
+54. Remove all family members whose last name is "Quincey". [(link)](https://sql-academy.org/en/trainer/tasks/54)
 
 <details>
   <summary>Solution</summary>
@@ -844,7 +845,7 @@ WHERE member_name LIKE '% Quincey';
 
 </details>
 
-55. Удалить компании, совершившие наименьшее количество рейсов. [(link)](https://sql-academy.org/en/trainer/tasks/55)
+55. Delete the companies that made the least number of flights. [(link)](https://sql-academy.org/en/trainer/tasks/55)
 
 <details>
   <summary>Solution</summary>
@@ -868,7 +869,7 @@ WHERE id IN (
 
 </details>
 
-56. Удалить все перелеты, совершенные из Москвы (Moscow). [(link)](https://sql-academy.org/en/trainer/tasks/56)
+56. Delete all flights made from Moscow (Moscow). [(link)](https://sql-academy.org/en/trainer/tasks/56)
 
 <details>
   <summary>Solution</summary>
@@ -881,7 +882,7 @@ WHERE town_from = 'Moscow';
 
 </details>
 
-57. Перенести расписание всех занятий на 30 мин. вперед. [(link)](https://sql-academy.org/en/trainer/tasks/57)
+57. Reschedule the schedule of all classes for 30 minutes. forward [(link)](https://sql-academy.org/en/trainer/tasks/57)
 
 <details>
   <summary>Solution</summary>
@@ -894,8 +895,8 @@ SET start_pair = ADDTIME(start_pair, '00:30:00'),
 
 </details>
 
-58. Добавить отзыв с рейтингом 5 на жилье, находящиеся по адресу "11218, Friel Place, New York", от имени "George
-    Clooney" [(link)](https://sql-academy.org/en/trainer/tasks/58)
+58.Add a 5-star comment on housing located at 11218 Friel Place, New York on behalf of George Clooney 
+[(link)](https://sql-academy.org/en/trainer/tasks/58)
 
 <details>
   <summary>Solution</summary>
@@ -919,7 +920,7 @@ SET id             = (
 
 </details>
 
-59. Вывести пользователей,указавших Белорусский номер телефона ? Телефонный код Белоруссии +375.
+59. Print users who have a Belarusian phone number? The telephone code of Belarus is +375.
     [(link)](https://sql-academy.org/en/trainer/tasks/59)
 
 <details>
@@ -933,8 +934,8 @@ WHERE phone_number LIKE '+375 %';
 
 </details>
 
-60. Выведите идентификаторы преподавателей, которые хотя бы один раз за всё время преподавали в каждом из одиннадцатых
-    классов. [(link)](https://sql-academy.org/en/trainer/tasks/60)
+60. Print the identifiers of the teachers who taught at least once for the entire time in each of the eleventh grades. 
+[(link)](https://sql-academy.org/en/trainer/tasks/60)
 
 <details>
   <summary>Solution</summary>
@@ -950,9 +951,9 @@ HAVING COUNT(DISTINCT name) = 2;
 
 </details>
 
-61. Выведите список комнат, которые были зарезервированы хотя бы на одни сутки в 12-ую неделю 2020 года. В данной задаче
-    в качестве одной недели примите период из семи дней, первый из которых начинается 1 января 2020 года. Например, первая
-    неделя года — 1–7 января, а третья — 15–21 января. [(link)](https://sql-academy.org/en/trainer/tasks/61)
+61. Output a list of rooms that have been reserved for at least one day in the 12th week of 2020. In this task, take a 
+period of seven days as one week, the first of which begins on January 1, 2020. For example, the first week of the year 
+is January 1-7, and the third is January 15-21. [(link)](https://sql-academy.org/en/trainer/tasks/61)
 
 <details>
   <summary>Solution</summary>
@@ -967,9 +968,8 @@ WHERE WEEK(start_date, 1) = 12
 
 </details>
 
-62. Вывести в порядке убывания популярности доменные имена 2-го уровня, используемые пользователями для электронной
-    почты. Полученный результат необходимо дополнительно отсортировать по возрастанию названий доменных имён.
-    [(link)](https://sql-academy.org/en/trainer/tasks/62)
+62. List the 2nd-level domain names used by users for email in descending order of popularity. The resulting result must
+be additionally sorted in ascending order of domain names. [(link)](https://sql-academy.org/en/trainer/tasks/62)
 
 <details>
   <summary>Solution</summary>
@@ -985,7 +985,7 @@ ORDER BY count DESC,
 
 </details>
 
-63. Выведите отсортированный список (по возрастанию) фамилий и имен студентов в виде Фамилия.И.
+63. Print the sorted list (in ascending order) of students' lastnames and firstnames in the form Surname.F.
     [(link)](https://sql-academy.org/en/trainer/tasks/63)
 
 <details>
@@ -999,8 +999,8 @@ ORDER BY name;
 
 </details>
 
-64. Вывести количество бронирований по каждому месяцу каждого года, в которых было хотя бы 1 бронирование. Результат
-    отсортируйте в порядке возрастания даты бронирования. [(link)](https://sql-academy.org/en/trainer/tasks/64)
+64. Display the number of reservations for each month of each year that had at least 1 reservation. Sort the result in 
+ascending order of reservation date. [(link)](https://sql-academy.org/en/trainer/tasks/64)
 
 <details>
   <summary>Solution</summary>
@@ -1018,8 +1018,8 @@ ORDER BY year,
 
 </details>
 
-65. Необходимо вывести рейтинг для комнат, которые хоть раз арендовали, как среднее значение рейтинга отзывов
-    округленное до целого вниз. [(link)](https://sql-academy.org/en/trainer/tasks/65)
+65. It is necessary to display the rating for rooms that have been rented at least once, as the average of the rating of
+reviews, rounded down to the integer. [(link)](https://sql-academy.org/en/trainer/tasks/65)
 
 <details>
   <summary>Solution</summary>
@@ -1034,8 +1034,9 @@ GROUP BY room_id;
 
 </details>
 
-66. Вывести список комнат со всеми удобствами (наличие ТВ, интернета, кухни и кондиционера), а также общее количество
-    дней и сумму за все дни аренды каждой из таких комнат. [(link)](https://sql-academy.org/en/trainer/tasks/66)
+66. Display a list of rooms with all amenities (TV, Internet, kitchen, and air conditioning), as well as the total 
+number of days and the amount for all days of renting each of these rooms. 
+[(link)](https://sql-academy.org/en/trainer/tasks/66)
 
 <details>
   <summary>Solution</summary>
