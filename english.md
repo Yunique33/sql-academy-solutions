@@ -1058,8 +1058,9 @@ GROUP BY home_type,
 
 </details>
 
-67. Вывести время отлета и время прилета для каждого перелета в формате "ЧЧ:ММ, ДД.ММ - ЧЧ:ММ, ДД.ММ", где часы и минуты
-    с ведущим нулем, а день и месяц без. [(link)](https://sql-academy.org/en/trainer/tasks/67)
+67. Output the departure time and arrival time for each flight in "HH:MM, DD.MM - HH:MM, DD.MM" format, where the hours 
+and minutes are with a leading zero, and the day and month are without. 
+[(link)](https://sql-academy.org/en/trainer/tasks/67)
 
 <details>
   <summary>Solution</summary>
@@ -1075,8 +1076,8 @@ FROM Trip;
 
 </details>
 
-68. Для каждой комнаты, которую снимали как минимум 1 раз, найдите имя человека, снимавшего ее последний раз, и дату,
-    когда он выехал [(link)](https://sql-academy.org/en/trainer/tasks/68)
+68. For each room selected at least 1 time, find the name of the person who last rented it and used it when they checked
+out [(link)](https://sql-academy.org/en/trainer/tasks/68)
 
 <details>
   <summary>Solution</summary>
@@ -1098,8 +1099,8 @@ FROM (
 
 </details>
 
-69. Вывести идентификаторы всех владельцев комнат, что размещены на сервисе бронирования жилья и сумму, которую они
-    заработали [(link)](https://sql-academy.org/en/trainer/tasks/69)
+69. Display the identifiers of all the owners of the rooms that are placed on our service for choosing accommodation and
+the value they have earned. [(link)](https://sql-academy.org/en/trainer/tasks/69)
 
 <details>
   <summary>Solution</summary>
@@ -1114,9 +1115,9 @@ GROUP BY owner_id;
 
 </details>
 
-70. Необходимо категоризовать жилье на economy, comfort, premium по цене соответственно <= 100,
-    100 < цена < 200, >= 200. В качестве результата вывести таблицу с названием категории и количеством жилья, попадающего в
-    данную категорию [(link)](https://sql-academy.org/en/trainer/tasks/70)
+70. It is necessary to categorize rooms into economy, comfort, premium at a price <= 100, 100 < price < 200, >= 200, 
+respectively. As a result, display a table with the name of the category and the number of housing falling into this 
+category [(link)](https://sql-academy.org/en/trainer/tasks/70)
 
 <details>
   <summary>Solution</summary>
@@ -1135,8 +1136,8 @@ GROUP BY category;
 
 </details>
 
-71. Найдите какой процент пользователей, зарегистрированных на сервисе бронирования, хоть раз арендовали или сдавали в
-    аренду жилье. Результат округлите до сотых. [(link)](https://sql-academy.org/en/trainer/tasks/71)
+71. Find what percentage of users registered on the booking service have rented or rented out a property at least once. 
+Round the result to the nearest hundredth. [(link)](https://sql-academy.org/en/trainer/tasks/71)
 
 <details>
   <summary>Solution</summary>
@@ -1163,8 +1164,8 @@ SELECT ROUND(
 
 </details>
 
-72. Выведите среднюю стоимость бронирования для комнат, которых бронировали хотя бы один раз. Среднюю стоимость
-    необходимо округлить до целого значения вверх. [(link)](https://sql-academy.org/en/trainer/tasks/72)
+72. ВPrint the average booking price per day for each of the rooms that have been booked at least once. The average cost
+must be rounded up to an integer value. [(link)](https://sql-academy.org/en/trainer/tasks/72)
 
 <details>
   <summary>Solution</summary>
@@ -1178,7 +1179,7 @@ GROUP BY room_id;
 
 </details>
 
-73. Выведите id тех комнат, которые арендовали нечетное количество раз
+73. Print the id of those rooms that have been rented an odd number of times
     [(link)](https://sql-academy.org/en/trainer/tasks/73)
 
 <details>
@@ -1194,8 +1195,8 @@ HAVING count % 2 != 0;
 
 </details>
 
-74. Выведите идентификатор и признак наличия интернета в помещении. Если интернет в сдаваемом жилье присутствует, то
-    выведите «YES», иначе «NO». [(link)](https://sql-academy.org/en/trainer/tasks/74)
+74. Display housing identifiers and the presence of the Internet in the housing. If there is Internet in the rented 
+housing, then print "YES", otherwise "NO". [(link)](https://sql-academy.org/en/trainer/tasks/74)
 
 <details>
   <summary>Solution</summary>
@@ -1208,7 +1209,7 @@ FROM Rooms;
 
 </details>
 
-75. Выведите фамилию, имя и дату рождения студентов, кто был рожден в мае.
+75. Display the last name, first name and date of birth of students who were born in May.
     [(link)](https://sql-academy.org/en/trainer/tasks/75)
 
 <details>
@@ -1224,10 +1225,9 @@ WHERE MONTHNAME(birthday) = 'May';
 
 </details>
 
-76. Вывести имена всех пользователей сервиса бронирования жилья, а также два признака: является ли пользователь
-    собственником какого-либо жилья (is_owner) и является ли пользователь арендатором (is_tenant). В случае наличия у
-    пользователя признака необходимо вывести в соответствующее поле 1, иначе 0.
-    [(link)](https://sql-academy.org/en/trainer/tasks/76)
+76. Display the names of all users of the booking service, as well as the status of whether the user is the owner of the
+housing and whether he has rented the housing at least once. If the user has the specified status, display 1 in the 
+appropriate field, otherwise 0. [(link)](https://sql-academy.org/en/trainer/tasks/76)
 
 <details>
   <summary>Solution</summary>
@@ -1255,8 +1255,8 @@ FROM Users;
 
 </details>
 
-77. Создайте представление с именем "People", которое будет содержать список имен (first_name) и фамилий (last_name)
-    всех студентов (Student) и преподавателей(Teacher) [(link)](https://sql-academy.org/en/trainer/tasks/77)
+77. Create a view called "People" that will contain a list of first names and last names of all students and teachers 
+[(link)](https://sql-academy.org/en/trainer/tasks/77)
 
 <details>
   <summary>Solution</summary>
