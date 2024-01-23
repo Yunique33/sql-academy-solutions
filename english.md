@@ -1269,7 +1269,50 @@ FROM Student
 UNION
 SELECT first_name,
        last_name
-FROM Teacher
+FROM Teacher;
+```
+
+</details>
+
+78. Display all users with email in "hotmail.com" [(link)](https://sql-academy.org/en/trainer/tasks/78)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT *
+FROM Users
+WHERE email RLIKE '@hotmail.com';
+```
+
+</details>
+
+79. Print the id, home_type, price fields for all rooms. If the room has a TV and Internet at the same time, then 
+display the price in the price field, applying a 10% discount [(сайт)](https://sql-academy.org/en/trainer/tasks/79)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT id,
+       home_type,
+       IF(has_tv AND has_internet, price * 0.9, price) AS price
+FROM Rooms;
+```
+
+</details>
+
+80. Create a "Verified_Users" view with id, name and email fields that will only show users who have a verified email 
+address. [(сайт)](https://sql-academy.org/en/trainer/tasks/80)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+CREATE VIEW Verified_Users AS
+SELECT id, name, email
+FROM Users
+WHERE email_verified_at IS NOT NULL;
 ```
 
 </details>

@@ -1274,10 +1274,52 @@ FROM Student
 UNION
 SELECT first_name,
        last_name
-FROM Teacher
+FROM Teacher;
 ```
 
 </details>
 
 78. Выведите всех пользователей с электронной почтой в «hotmail.com» 
 [(сайт)](https://sql-academy.org/ru/trainer/tasks/78)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT *
+FROM Users
+WHERE email RLIKE '@hotmail.com';
+```
+
+</details>
+
+79. Выведите поля id, home_type, price у всех комнат из таблицы Rooms. Если комната имеет телевизор и интернет 
+одновременно, то в качестве цены в поле price выведите цену, применив скидку 10% 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/79)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+SELECT id,
+       home_type,
+       IF(has_tv AND has_internet, price * 0.9, price) AS price
+FROM Rooms;
+```
+
+</details>
+
+80. Создайте представление «Verified_Users» с полями id, name и email, которое будет показывает только тех 
+пользователей, у которых подтвержден адрес электронной почты. [(сайт)](https://sql-academy.org/ru/trainer/tasks/80)
+
+<details>
+  <summary>Решение</summary>
+
+```mysql
+CREATE VIEW Verified_Users AS
+SELECT id, name, email
+FROM Users
+WHERE email_verified_at IS NOT NULL;
+```
+
+</details>
