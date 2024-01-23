@@ -1278,3 +1278,6 @@ FROM Teacher
 ```
 
 </details>
+
+78. Выведите всех пользователей с электронной почтой в «hotmail.com» 
+[(сайт)](https://sql-academy.org/ru/trainer/tasks/78)
