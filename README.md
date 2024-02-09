@@ -2,7 +2,7 @@
 
 [English version](english.md) 
 
-[Сертификат](yunus_ganiyev.pdf)
+[Сертификат](yunus_ganiyev_ru.pdf)
 
 1. Вывести имена всех людей, которые есть в базе данных
    авиакомпаний [(сайт)](https://sql-academy.org/ru/trainer/tasks/1)
