@@ -2,7 +2,7 @@
 
 [English version](english.md)
 
-[Certificate](yunus_ganiyev.pdf)
+[Certificate](certificates/yunus_ganiyev.pdf)
 
 1. Print the names of all the people who are in the airline database 
 [(link)](https://sql-academy.org/en/trainer/tasks/1)
