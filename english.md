@@ -147,8 +147,9 @@ WHERE DATE(time_out) = '1900-01-01'
 ```mysql
 SELECT name
 FROM passenger
-ORDER BY LENGTH(name) DESC
-LIMIT 1;
+WHERE LENGTH(name) = (
+    SELECT MAX(LENGTH(name))
+    FROM passenger);
 ```
 
 </details>
