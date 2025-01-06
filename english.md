@@ -294,12 +294,13 @@ GROUP BY status;
 ```mysql
 SELECT status,
        member_name,
-       (amount * unit_price) AS costs
+       SUM(amount * unit_price) AS costs
 FROM FamilyMembers fm
          JOIN Payments ps ON fm.member_id = ps.family_member
          JOIN Goods gs ON ps.good = gs.good_id
          JOIN GoodTypes gt ON gs.type = gt.good_type_id
-WHERE good_type_name = 'entertainment';
+WHERE good_type_name = 'entertainment'
+GROUP BY status, member_name;
 ```
 
 </details>
